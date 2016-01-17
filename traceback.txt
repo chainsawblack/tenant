@@ -1,26 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 209, in script
-    python:
-ScriptError: could not find label 'start'.
+  File "renpy/common/00start.rpy", line 81, in script
+    return
+Exception: Could not find return label (u'D:\\Black ICE\\\u0438\u0433\u0440\u0430\\the_tenant/game/script.rpy', 1452944000, 58).
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\r.chernitsyn\Downloads\renpy-6.99.8-sdk\renpy\bootstrap.py", line 281, in bootstrap
-    renpy.main.main()
-  File "C:\Users\r.chernitsyn\Downloads\renpy-6.99.8-sdk\renpy\main.py", line 468, in main
-    run(restart)
-  File "C:\Users\r.chernitsyn\Downloads\renpy-6.99.8-sdk\renpy\main.py", line 139, in run
-    renpy.execution.run_context(True)
-  File "C:\Users\r.chernitsyn\Downloads\renpy-6.99.8-sdk\renpy\execution.py", line 714, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 209, in script
-    python:
-  File "C:\Users\r.chernitsyn\Downloads\renpy-6.99.8-sdk\renpy\script.py", line 843, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'start'.
+  File "renpy/common/00start.rpy", line 81, in script
+    return
+  File "D:\Black ICE\игра\renpy\ast.py", line 1331, in execute
+    next_node(renpy.game.context().lookup_return(pop=True))
+  File "D:\Black ICE\игра\renpy\execution.py", line 391, in lookup_return
+    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
+Exception: Could not find return label (u'D:\\Black ICE\\\u0438\u0433\u0440\u0430\\the_tenant/game/script.rpy', 1452944000, 58).
 
-Windows-7-6.1.7601-SP1
-Ren'Py 6.99.8.959
+Windows-post2008Server-6.2.9200
+Ren'Py 6.18.3.761

@@ -231,8 +231,18 @@ screen main_menu:
     window:
         style "mm_root"
         # add SnowBlossom("data/face.png", count=15, xspeed=(-400, 400), yspeed=(-400, 400), start=10, fast=True)
-        add(Animation("source/images/mainmenu_bg_2.png", 1.3, "source/images/mainmenu_bg_2_light_off.png", 0.04, "source/images/mainmenu_bg_2.png", 1.3, "source/images/mainmenu_bg_2_light_off.png", 0.07, "source/images/mainmenu_bg_2.png", 0.3, "source/images/mainmenu_bg_2.png", 0.4, "source/images/mainmenu_bg_2_light_off.png", 0.04, "source/images/mainmenu_bg_2.png", 2.7)) # Анимация фона меню - неоновая лампа
+        #add(Animation("source/images/house_mainscreen_10.png", 4.0)) # Анимация фона меню - здание игры        
         #add custom_cursor(cursorlist) # Кастомный курсор - не работает
+        #image house_mainscreen_10 = "source/images/house_mainscreen_10.png"
+        #show house_mainscreen_10 with zoomin
+        add "animated_whitenoise"
+        add "main_menu_animation"
+        add "main_menu_title"
+        #add "animated_whitenoise"
+        #hide "animated_whitenoise"
+        $ renpy.sound.set_volume(0.5) #....установить громкость звука на 50% 
+        $ renpy.music.set_volume(0.5) #.....установить громкость музыки на 50%
+
         
         
     # Кнопки главного меню.
@@ -796,7 +806,7 @@ init -2 python:
 screen mailbox:
     tag menu
     modal True
-    add "source/images/mainmenu_ingame_bg.png" 
+    add "source/images/house_mainscreen_ingame.png" 
     key "mouseup_3" action Return(None)
     default current_message = None
     $ available_drafts = [i for i in contacts if i.draft_label]    
@@ -927,7 +937,7 @@ init -2 python:
 #
 screen about:
     tag menu 
-    add "source/images/mainmenu_ingame_bg.png" 
+    add "source/images/house_mainscreen_ingame.png" 
     frame:  
         area (0,0,800,540)  
         viewport mousewheel True scrollbars "vertical": 

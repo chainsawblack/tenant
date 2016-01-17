@@ -25,12 +25,12 @@ init -1 python hide:
     ## Это управляет заголовком окна, когда Ren'Py
     ## запущен в оконном режиме.
 
-    config.window_title = u"Случай в баре"
+    config.window_title = u"Арендатор"
 
     # Эти управляют именем и версией игры, которые указываются
     # в журналах отладки.
-    config.name = "Случай в баре"
-    config.version = "0.3"
+    config.name = "Арендатор"
+    config.version = "1"
 
     #########################################
     # Темы
@@ -73,12 +73,12 @@ init -1 python hide:
         ## The background of the main menu. This can be a color
         ## beginning with '#', or an image filename. The latter
         ## should take up the full height and width of the screen.
-        mm_root = "source/images/mainmenu_bg_2.png",
+        mm_root = "source/images/main_menu_blank.png",
 
         ## The background of the game menu. This can be a color
         ## beginning with '#', or an image filename. The latter
         ## should take up the full height and width of the screen.
-        gm_root = "source/images/mainmenu_ingame_bg.png",
+        gm_root = im.Scale("source/images/house_mainscreen_ingame.png", 800, 600),
 
         ## If this is True, the in-game window is rounded. If False,
         ## the in-game window is square.
@@ -173,8 +173,8 @@ init -1 python hide:
 
     ## Звуки при нажатии на кнопки и imagemap-ы.
 
-    # style.button.activate_sound = "click.wav"
-    # style.imagemap.activate_sound = "click.wav"
+    style.button.activate_sound = "source/sound/clicksound1.mp3"
+    style.imagemap.activate_sound = "source/sound/clicksound1.mp3"
 
     ## Звуки при входе и выходе из игрового меню.
 
@@ -187,7 +187,8 @@ init -1 python hide:
 
     ## Музыка, играющая в главном меню.
 
-    config.main_menu_music = "source/sound/Archive-You_Make_Me_Feel.mp3"
+    config.main_menu_music = "source/sound/mainmenu_sound.mp3"
+    config.mouse = { 'default' : [ ('source/images/my_cursor.png', 0, 0)] } 
 
 
     #########################################
@@ -294,12 +295,12 @@ init python:
     ## The name that's used for directories and archive files. For example, if
     ## this is 'mygame-1.0', the windows distribution will be in the
     ## directory 'mygame-1.0-win', in the 'mygame-1.0-win.zip' file.
-    build.directory_name = "test_orb-1.0"
+    build.directory_name = "the_tenant-1.0"
 
     ## The name that's uses for executables - the program that users will run
     ## to start the game. For example, if this is 'mygame', then on Windows,
     ## users can click 'mygame.exe' to start the game.
-    build.executable_name = "test_orb"
+    build.executable_name = "the_tenant"
 
     ## If True, Ren'Py will include update information into packages. This
     ## allows the updater to run.
