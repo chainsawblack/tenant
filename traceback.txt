@@ -1,20 +1,63 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 81, in script
-    return
-Exception: Could not find return label (u'D:\\Black ICE\\\u0438\u0433\u0440\u0430\\the_tenant/game/script.rpy', 1452944000, 58).
+  File "game/screens.rpy", line 214, in script
+    call screen main_menu
+  File "renpy/common/000statements.rpy", line 457, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/screens.rpy", line 225, in execute
+    screen main_menu:
+  File "game/screens.rpy", line 231, in execute
+    imagebutton auto "source/images/gui/main_start_%s.png" xpos 173 ypos y focus_mask True action Start() hovered [ Play ("test_one", "source/sound/clicksound1.mp3") ] unhovered []
+  File "game/screens.rpy", line 231, in keywords
+    imagebutton auto "source/images/gui/main_start_%s.png" xpos 173 ypos y focus_mask True action Start() hovered [ Play ("test_one", "source/sound/clicksound1.mp3") ] unhovered []
+  File "renpy/common/00action_audio.rpy", line 58, in __init__
+    selected = renpy.music.is_music(channel)
+Exception: Audio channel 'test_one' is unknown.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 81, in script
-    return
-  File "D:\Black ICE\игра\renpy\ast.py", line 1331, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "D:\Black ICE\игра\renpy\execution.py", line 391, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'D:\\Black ICE\\\u0438\u0433\u0440\u0430\\the_tenant/game/script.rpy', 1452944000, 58).
+  File "game/screens.rpy", line 214, in script
+    call screen main_menu
+  File "D:\Black ICE\игра\renpy\ast.py", line 1635, in execute
+    self.call("execute")
+  File "D:\Black ICE\игра\renpy\ast.py", line 1653, in call
+    renpy.statements.call(method, parsed, *args, **kwargs)
+  File "D:\Black ICE\игра\renpy\statements.py", line 144, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 457, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "D:\Black ICE\игра\renpy\exports.py", line 2311, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "D:\Black ICE\игра\renpy\ui.py", line 247, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "D:\Black ICE\игра\renpy\display\core.py", line 2160, in interact
+    scene_lists.replace_transient()
+  File "D:\Black ICE\игра\renpy\display\core.py", line 669, in replace_transient
+    self.remove(layer, tag)
+  File "D:\Black ICE\игра\renpy\display\core.py", line 943, in remove
+    self.hide_or_replace(layer, remove_index, "hide")
+  File "D:\Black ICE\игра\renpy\display\core.py", line 867, in hide_or_replace
+    d = oldsle.displayable._hide(now - st, now - at, prefix)
+  File "D:\Black ICE\игра\renpy\display\screen.py", line 423, in _hide
+    self.update()
+  File "D:\Black ICE\игра\renpy\display\screen.py", line 555, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 225, in execute
+    screen main_menu:
+  File "game/screens.rpy", line 231, in execute
+    imagebutton auto "source/images/gui/main_start_%s.png" xpos 173 ypos y focus_mask True action Start() hovered [ Play ("test_one", "source/sound/clicksound1.mp3") ] unhovered []
+  File "game/screens.rpy", line 231, in keywords
+    imagebutton auto "source/images/gui/main_start_%s.png" xpos 173 ypos y focus_mask True action Start() hovered [ Play ("test_one", "source/sound/clicksound1.mp3") ] unhovered []
+  File "<screen language>", line 231, in <module>
+  File "renpy/common/00action_audio.rpy", line 58, in __init__
+    selected = renpy.music.is_music(channel)
+  File "D:\Black ICE\игра\renpy\audio\music.py", line 259, in is_music
+    c = get_channel(channel)
+  File "D:\Black ICE\игра\renpy\audio\audio.py", line 758, in get_channel
+    raise Exception("Audio channel %r is unknown." % name)
+Exception: Audio channel 'test_one' is unknown.
 
 Windows-post2008Server-6.2.9200
 Ren'Py 6.18.3.761

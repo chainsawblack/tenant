@@ -61,12 +61,23 @@ init:
         linear 9 zoom 1.1
         zoom 1.0        
         repeat
+    image bg uni = "source/images/main_menu_blank.png"
     image main_menu_title:
         "source/images/game_title.png"
+    image bus_window = "source/images/bus_window.png"
+    image bus_window_field = im.Scale("source/images/bus_window_field.png", 2801, 800)
+    transform bus_moving:
+        xalign 0.1
+        yalign 0.65
+        linear 28.0 xalign 0.9 yalign 0.0
+        repeat
+   
+        
 
     # Звуки:
     $ splashglitch = "source/sound/glitch.wav"
     $ rainsounds = "source/sound/rain3.mp3"
+    $ whitenoise = "source/sound/whitenoise.wav"
 
     # Переменные:
     # Общие:
@@ -90,35 +101,39 @@ init:
 label splashscreen:
     
     #jump start # Для отладки
+    jump in_da_bus #для отладки
     
-   # scene black
+    scene black
     
-   # $ renpy.pause (1.5, hard=True)
+    $ renpy.pause (1.5, hard=True)
     
-   # scene splashscreen static with whitenoise_changing_scene
+    scene splashscreen static with whitenoise_changing_scene
     
-   # $ renpy.pause (0.8, hard=True)
+    $ renpy.pause (0.8, hard=True)
     
-   # scene splashscreen glitch
+    scene splashscreen glitch
     
-   # play sound splashglitch
+    play sound splashglitch
     
-   # $ renpy.pause (1.0, hard=True)
+    $ renpy.pause (1.0, hard=True)
     
-   # scene splashscreen static
+    scene splashscreen static
     
-   # stop sound
+    stop sound
     
-   # $ renpy.pause (1.0, hard=True)
+    $ renpy.pause (1.0, hard=True)
     
-   # scene black with dissolve    
+    scene black with dissolve    
+    
+    $ renpy.pause (1, hard=True)
 
 return
 
 
 # Поехали
 label start:
-    # show expression custom_cursor(cursorlist) # Кастомный курсор # Не работает
+    play sound whitenoise fadein 1
+    #jump animated_whitenoise_label
     # with vpunch # Для тряски, на будущее
 
     ##############################################################################
@@ -150,20 +165,42 @@ label start:
     
     show it_rains with dissolve
 
-    show screen gui_game_menu(0) # Для отладки
+    #show screen gui_game_menu(0) # Для отладки
 
     #call new_message_received(3) # Новое сообщение # Для отладки
 
     "{i}...{/i}"
     
-    hide it_rains with dissolve
+    #hide it_rains with dissolve
     
-    scene black with dissolve
+    #scene black with dissolve
     
-    $ renpy.pause (6.0, hard=True)
+    $ renpy.pause (1.0, hard=True)
+    jump in_da_bus #для отладки
     
-    #jump storytelling_stage_1
+    
 
+return
+
+
+label in_da_bus:
+    scene bg uni with fade
+    show bus_window_field at bus_moving
+    show bus_window
+    "{i}1111111111{/i}"
+    
+    
+    
+return
+
+
+
+
+label animated_whitenoise_label:
+    play sound whitenoise fadein 1
+    show animated_whitenoise with fade
+    stop sound fadeout 1
+    hide animated_whitenoise with fade    
 return
 
 

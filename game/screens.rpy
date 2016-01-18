@@ -227,6 +227,8 @@ screen main_menu:
     # Это заменяет другие меню.
     tag menu
 
+    
+
     # Фон главного меню.
     window:
         style "mm_root"
@@ -243,27 +245,52 @@ screen main_menu:
         $ renpy.sound.set_volume(0.5) #....установить громкость звука на 50% 
         $ renpy.music.set_volume(0.5) #.....установить громкость музыки на 50%
 
+    $ y=155
+    imagebutton auto "source/images/gui/main_continue_%s.png" xpos 33 ypos y focus_mask True action Play ("test_one", "source/sound/clicksound1.mp3"), Jump("animated_whitenoise_label"), FileLoad(1, confirm=False, page="auto", newest=True) hovered [ Play ("test_one", "source/sound/hover_sound.wav") ]
+    $ y+=64
+    imagebutton auto "source/images/gui/main_start_%s.png" xpos 33 ypos y focus_mask True action Play ("test_two", "source/sound/clicksound1.mp3"), Start() hovered [ Play ("test_two", "source/sound/hover_sound.wav") ]
+    $ y+=57
+    imagebutton auto "source/images/gui/main_load_%s.png" xpos 33 ypos y focus_mask True action Play ("test_three", "source/sound/clicksound1.mp3"), Jump("animated_whitenoise_label"), ShowMenu("load") hovered [ Play ("test_three", "source/sound/hover_sound.wav") ]
+    $ y+=59
+    imagebutton auto "source/images/gui/main_settings_%s.png" xpos 33 ypos y focus_mask True action Play ("test_four", "source/sound/clicksound1.mp3"), Jump("animated_whitenoise_label"), ShowMenu("preferences") hovered [ Play ("test_four", "source/sound/hover_sound.wav") ] 
+    $ y+=58
+    imagebutton auto "source/images/gui/main_about_%s.png" xpos 33 ypos y focus_mask True action Play ("test_five", "source/sound/clicksound1.mp3"), Jump("animated_whitenoise_label"), ShowMenu("about") hovered [ Play ("test_five", "source/sound/hover_sound.wav") ]
+    $ y+=54
+    imagebutton auto "source/images/gui/main_exit_%s.png" xpos 33 ypos y focus_mask True action Play ("test_six", "source/sound/clicksound1.mp3"), Jump("animated_whitenoise_label"), Jump("my_exit") hovered [ Play ("test_six", "source/sound/hover_sound.wav") ]
+    $ y+=59
         
         
     # Кнопки главного меню.
-    frame:
-        style_group "mm"
-        xalign .98
-        yalign .98
+    #frame:
+        #style_group "mm"
+        #xalign .98
+        #yalign .98
 
-        has vbox
+        #has vbox
 
-        textbutton _("Начать новую игру") action Jump("restart")
-        textbutton _("Продолжить игру") action FileLoad(1, confirm=False, page="auto", newest=True)
-        textbutton _("Загрузить игру") action ShowMenu("load")
-        textbutton _("Настройки") action ShowMenu("preferences")
-        textbutton _("Об игре") action ShowMenu("about")
-        textbutton _("Выход") action Jump("my_exit")
+        #textbutton _("Начать новую игру") action Jump("restart")
+        #textbutton _("Продолжить игру") action FileLoad(1, confirm=False, page="auto", newest=True)
+        #textbutton _("Загрузить игру") action ShowMenu("load")
+        #textbutton _("Настройки") action ShowMenu("preferences")
+        #textbutton _("Об игре") action ShowMenu("about")
+        #textbutton _("Выход") action Jump("my_exit")
 
 init -2 python:
 
     # Сделать все кнопки главного меню одноразмерными.
     style.mm_button.size_group = "mm"
+    renpy.music.register_channel("test_one", "sfx", False)
+    renpy.music.register_channel("test_two", "sfx", False)
+    renpy.music.register_channel("test_three", "sfx", False)
+    renpy.music.register_channel("test_four", "sfx", False)
+    renpy.music.register_channel("test_five", "sfx", False)
+    renpy.music.register_channel("test_six", "sfx", False)
+    renpy.music.set_volume(0.5, delay=0, channel='test_one')
+    renpy.music.set_volume(0.5, delay=0, channel='test_two')
+    renpy.music.set_volume(0.5, delay=0, channel='test_three')
+    renpy.music.set_volume(0.5, delay=0, channel='test_four')
+    renpy.music.set_volume(0.5, delay=0, channel='test_five')
+    renpy.music.set_volume(0.5, delay=0, channel='test_six')
 
 
 ##############################################################################

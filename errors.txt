@@ -2,8 +2,12 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 63: expected 'comma or end of line' not found.
-    show "animated_whitenoise"
-    ^
+File "game/script.rpy", line 183: expected statement.
+    add bus_window_field
+                        ^
+
+File "game/script.rpy", line 184: expected statement.
+    add bus_window
+                  ^
 
 Ren'Py Version: Ren'Py 6.18.3.761
