@@ -78,6 +78,7 @@ init:
     $ splashglitch = "source/sound/glitch.wav"
     $ rainsounds = "source/sound/rain3.mp3"
     $ whitenoise = "source/sound/whitenoise.wav"
+    $ bus_engine = "source/sound/bus_engine.wav"
 
     # Переменные:
     # Общие:
@@ -184,10 +185,12 @@ return
 
 
 label in_da_bus:
+    play sound bus_engine fadein 2
     scene bg uni with fade
     show bus_window_field at bus_moving
     show bus_window
-    "{i}1111111111{/i}"
+    "{i}В этот город я приехал...{/i}"
+    stop sound fadeout 2
     
     
     

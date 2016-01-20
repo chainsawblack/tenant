@@ -2,12 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 183: expected statement.
-    add bus_window_field
-                        ^
+File "game/script.rpy", line 193: expected end of line
+    stop sound fadein 2
+               ^
 
-File "game/script.rpy", line 184: expected statement.
-    add bus_window
-                  ^
-
-Ren'Py Version: Ren'Py 6.18.3.761
+Ren'Py Version: Ren'Py 6.99.8.959
