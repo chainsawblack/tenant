@@ -64,13 +64,26 @@ init:
     image bg uni = "source/images/main_menu_blank.png"
     image main_menu_title:
         "source/images/game_title.png"
+    # Объявление изображений
+    # in_da_bus
     image bus_window = "source/images/bus_window.png"
     image bus_window_field = im.Scale("source/images/bus_window_field.png", 2801, 800)
     transform bus_moving:
         xalign 0.1
         yalign 0.65
-        linear 28.0 xalign 0.9 yalign 0.0
+        linear 60.0 xalign 0.9 yalign 0.0
         repeat
+    image bus_window_front = "source/images/bus_window_front.png"
+    image bus_station = im.Scale("source/images/bus_station.png", 800, 600)
+    transform bus_station_zoom:
+        im.Scale("source/images/bus_station.png", 800, 600)
+        linear 11 yalign 0.9 zoom 1.4 xalign 1.0    
+        linear 4 zoom 1.5 xalign 0.7 yalign 1.1
+        linear 0.1 zoom 1.505
+        linear 0.1 zoom 1.5
+    image bus_station_square = "source/images/bus_station_square.png"
+        
+        
    
         
 
@@ -78,7 +91,7 @@ init:
     $ splashglitch = "source/sound/glitch.wav"
     $ rainsounds = "source/sound/rain3.mp3"
     $ whitenoise = "source/sound/whitenoise.wav"
-    $ bus_engine = "source/sound/bus_engine.wav"
+    $ bus_engine = "source/sound/bus_engine.mp3"
 
     # Переменные:
     # Общие:
@@ -160,23 +173,23 @@ label start:
     ##############################################################################
     # Вступительная сцена
 
-    scene bg uni with fade
+    #scene bg uni with fade
 
-    show animated_whitenoise with fade
+    #show animated_whitenoise with fade
     
-    show it_rains with dissolve
+    #show it_rains with dissolve
 
     #show screen gui_game_menu(0) # Для отладки
 
     #call new_message_received(3) # Новое сообщение # Для отладки
 
-    "{i}...{/i}"
+    #"{i}...{/i}"
     
     #hide it_rains with dissolve
     
     #scene black with dissolve
     
-    $ renpy.pause (1.0, hard=True)
+    #$ renpy.pause (1.0, hard=True)
     jump in_da_bus #для отладки
     
     
@@ -185,12 +198,29 @@ return
 
 
 label in_da_bus:
-    play sound bus_engine fadein 2
+    stop music
+    play music bus_engine fadein 2
     scene bg uni with fade
     show bus_window_field at bus_moving
     show bus_window
-    "{i}В этот город я приехал...{/i}"
-    stop sound fadeout 2
+    $ renpy.pause (1.3, hard=True)
+    "{i}В этот город я приехал, чтобы начать всё сначала.{/i}"
+    "{i}За несколько часов в убитом пазике все конечности затекли.{/i}"
+    hide bus_window_field
+    hide bus_window
+    show bus_station at bus_station_zoom
+    show bus_window_front
+    $ renpy.pause (13, hard=True)
+    "{i}Я прибыл на место.{/i}"
+    stop music fadeout 1
+    "{i}Унылый серый полдень, почти лишенный красок. Затрапезный автовокзал некрупного облцентра.{/i}"
+    "{i}Мне нужно найти свое новое жилье. Об аренде я договорился заранее, но, не зная точно время приезда, попросил не встречать меня.{/i}"
+    "{i}Заодно посмотрю на город, где собираюсь жить ближайшие несколько месяцев. \nСкорее даже год.{/i}"
+    scene bus_station_square
+    "{i}Ничего сверхестественного. Городок как сотни и тысячи других. Я и выбрал-то его почти наугад.{/i}"
+    "{i}Мой будущий дом - спальный район из типовых панелек - находится минутах в десяти от вокзала, если верить картам гугла. Дойду пешком, время разобраться с местным транспортом будет позже.{/i}"
+    
+    
     
     
     
